@@ -130,7 +130,7 @@ details:active{
       </div>
   </div>
  <div class="container">
- <p>${this.cardText}</p>
+ <slot></slot>
    </div>
    </div>
      
