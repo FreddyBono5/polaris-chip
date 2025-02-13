@@ -18,6 +18,7 @@ export class MyCard extends LitElement {
     this.img = "";
     this.cardHeader = "Card Header";
     this.cardText = "Card Text";
+    this.fancy = false;
 
   }
 
@@ -26,6 +27,15 @@ export class MyCard extends LitElement {
       :host {
         display: block;
       }
+      :host([fancy]) .card {
+        display: block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
+        }
+        .card.toggled {
+          background-color: blue;
+        }
       h3 {
         font-size: 20px;
       }
@@ -152,6 +162,7 @@ details:active{
       cardHeader: { type: String },
       cardText: { type: String },
       background: { type: String },
+      fancy: { type: Boolean, reflect: true },
       
     };
   }
