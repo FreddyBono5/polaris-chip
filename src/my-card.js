@@ -24,17 +24,18 @@ export class MyCard extends LitElement {
 
   static get styles() {
     return css`
+      // put this anywhere on the MyCard class; just above render() is probably good
+
       :host {
         display: block;
       }
       :host([fancy]) .card {
-        display: block;
-        background-color: pink;
-        border: 2px solid fuchsia;
-        box-shadow: 10px 5px 5px red;
+       background-color: blue;
+       color: white
         }
         .card.toggled {
-          background-color: blue;
+          background-color: red;
+          color: white;
         }
       h3 {
         font-size: 20px;
@@ -42,6 +43,7 @@ export class MyCard extends LitElement {
       .fancy{
   background-color: orange;
 }
+
 #back{
   margin: 1px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -52,7 +54,6 @@ export class MyCard extends LitElement {
   width: 500px;
 }
 .picture{
-  width: 80%;
   background-color: #4CBB17;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
@@ -107,7 +108,7 @@ details:active{
 }
 
 .image {
-  margin: 0px 0px 0px 40px; 
+  margin: 0px 0px 0px 15px; 
 }
 
 
@@ -139,9 +140,11 @@ details:active{
    <img src = ${this.img}>
       </div>
   </div>
+  <details ?open="${this.fancy}" @toggle="${this.openChanged}">
  <div class="container">
  <slot></slot>
    </div>
+  </details>
    </div>
      
    </div>
@@ -153,6 +156,16 @@ details:active{
  </div>
 
     </div>`;
+  }
+  // put this anywhere on the MyCard class; just above render() is probably good
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
   }
 
   static get properties() {
