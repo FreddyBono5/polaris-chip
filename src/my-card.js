@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import "@haxtheweb/meme-maker/meme-maker.js";
 
 /**
  * Now it's your turn. Here's what we need to try and do:
@@ -24,8 +25,7 @@ export class MyCard extends LitElement {
 
   static get styles() {
     return css`
-      // put this anywhere on the MyCard class; just above render() is probably good
-
+      /* put this anywhere on the MyCard class; just above render() is probably good */
       :host {
         display: block;
       }
